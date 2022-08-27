@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  database:
+    image: postgres
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: invoicr_development
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 5
+  api:
+    build:
+      context: .
+      args:
+        RAILS_ENV: development
+    command: bundle exec rails server -b 0.0.0.0
+    volumes:
+      - .:/home/docker/app
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    ports:
+      - 3000:3000
+    depends_on:
+      database:
+        condition: service_healthy
+volumes:
+  database:

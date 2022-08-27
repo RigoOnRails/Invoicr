@@ -23,6 +23,9 @@ default: &default
 
 development:
   <<: *default
+  host: database
+  username: postgres
+  password: password
   database: invoicr_development
 
   # The specified database role being used to connect to postgres.
@@ -81,6 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: invoicr_production
-  username: invoicr
-  password: <%= ENV["INVOICR_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
