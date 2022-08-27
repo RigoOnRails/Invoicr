@@ -1,0 +1,20 @@
+name: Lint
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Ruby & gems
+        uses: ruby/setup-ruby@v1.100.1
+        with:
+          bundler-cache: true
+
+      - name: Lint Ruby files
+        run: bundler exec rubocop --parallel --format github
