@@ -1,12 +1,15 @@
-name: Lint
+name: Lint & run tests
 on:
   push:
     branches: [develop]
   pull_request:
     branches: [develop]
 jobs:
-  lint:
+  lint-api:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: api
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -14,6 +17,7 @@ jobs:
       - name: Install Ruby & gems
         uses: ruby/setup-ruby@v1.100.1
         with:
+          working-directory: api
           bundler-cache: true
 
       - name: Lint Ruby files
