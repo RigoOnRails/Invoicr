@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-alpine3.16
+FROM ruby:3.1.1-alpine3.15
 
 RUN apk add --update --no-cache build-base postgresql-dev tzdata yarn bash
 
