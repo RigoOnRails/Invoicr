@@ -3,3 +3,7 @@ require:
   - rubocop-rails
   - rubocop-graphql
   - rubocop-rspec
+
+Style/Documentation:
+  Exclude:
+    - config/application.rb
