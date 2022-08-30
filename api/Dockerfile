@@ -20,7 +20,7 @@ ENV RAILS_ENV=$RAILS_ENV
 ENV RAILS_LOG_TO_STDOUT=1
 
 RUN gem install bundler
-RUN bundle install
+RUN BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install
 RUN yarn install
 
 # Run everything after as non-privileged user.
