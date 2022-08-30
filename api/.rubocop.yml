@@ -4,6 +4,12 @@ require:
   - rubocop-graphql
   - rubocop-rspec
 
+AllCops:
+  NewCops: enable
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+
 Style/Documentation:
   Exclude:
     - config/application.rb
