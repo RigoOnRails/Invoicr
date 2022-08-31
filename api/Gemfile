@@ -47,6 +47,9 @@ group :development, :test do
 
   # Testing framework
   gem 'rspec-rails', '~> 5.0.0'
+
+  # Parallel testing for RSpec
+  gem 'parallel_tests'
 end
 
 group :development do
