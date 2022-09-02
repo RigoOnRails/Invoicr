@@ -56,6 +56,12 @@ group :development, :test do
 
   # Testing helpers
   gem 'shoulda-matchers', '~> 5.0'
+
+  # Model test data
+  gem 'factory_bot_rails'
+
+  # Fake data generator
+  gem 'faker'
 end
 
 group :development do
