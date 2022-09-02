@@ -12,6 +12,25 @@ AllCops:
     - db/migrate/*.rb
     - vendor/**/*
 
+GraphQL/ObjectDescription:
+  Enabled: false
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
 Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
   Exclude:
+    - app/channels/application_cable/channel.rb
+    - app/channels/application_cable/connection.rb
     - config/application.rb
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  EnforcedStyle: require_parentheses
+  IgnoreMacros: true
+  Exclude:
+    - spec/**/*_spec.rb

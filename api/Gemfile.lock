@@ -87,6 +87,7 @@ GEM
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    graphql (2.0.13)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -237,6 +238,7 @@ DEPENDENCIES
   bootsnap
   debug
   devise
+  graphql
   parallel_tests
   pg (~> 1.1)
   puma (~> 5.0)
