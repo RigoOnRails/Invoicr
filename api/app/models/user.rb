@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :confirmable, :lockable
 
-  validates :name, presence: true
+  validates :name, presence: true, on: :update
   validates :authentication_token, uniqueness: true
 
+  before_create :set_default_name
   before_save :ensure_authentication_token
 
   def reset_authentication_token
@@ -15,6 +16,10 @@ class User < ApplicationRecord
   end
 
   private
+
+    def set_default_name
+      self.name = email
+    end
 
     def generate_authentication_token
       loop do

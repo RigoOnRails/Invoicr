@@ -44,5 +44,3 @@ Style/MethodCallWithArgsParentheses:
   Enabled: true
   EnforcedStyle: require_parentheses
   IgnoreMacros: true
-  Exclude:
-    - spec/**/*_spec.rb

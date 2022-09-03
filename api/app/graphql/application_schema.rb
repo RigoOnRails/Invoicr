@@ -36,4 +36,14 @@ class ApplicationSchema < GraphQL::Schema
     # For example, use Rails' GlobalID library (https://github.com/rails/globalid):
     GlobalID.find(global_id)
   end
+
+  rescue_from(NotAuthorizedError) do |exception|
+    extensions = {
+      errorType: :USER_ERROR,
+      errorClass: :AUTHORIZATION,
+      errorDetails: { message: exception.message }
+    }
+
+    raise GraphQL::ExecutionError.new(exception.message, extensions:)
+  end
 end

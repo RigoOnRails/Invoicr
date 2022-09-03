@@ -2,6 +2,20 @@
 
 require 'graphql/helpers'
 
+RSpec::Matchers.define(:have_graphql_error_class) do |error_class|
+  match do |result|
+    error = result['errors'].first.with_indifferent_access
+    error['extensions']['errorClass'] == error_class
+  end
+end
+
+RSpec::Matchers.define(:have_graphql_error_message) do |error_message|
+  match do |result|
+    error = result['errors'].first.with_indifferent_access
+    error['extensions']['errorDetails']['message'] == error_message
+  end
+end
+
 RSpec::Matchers.define(:have_graphql_name) do |name|
   match do |klass|
     klass.graphql_name == name
