@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class InvoicrSchema < GraphQL::Schema
+class ApplicationSchema < GraphQL::Schema
   mutation(Types::Mutation)
   query(Types::Query)
 

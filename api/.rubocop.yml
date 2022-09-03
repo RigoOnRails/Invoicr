@@ -12,11 +12,23 @@ AllCops:
     - db/migrate/*.rb
     - vendor/**/*
 
+GraphQL/FieldDescription:
+  Enabled: false
+
 GraphQL/ObjectDescription:
+  Enabled: false
+
+GraphQL/OrderedFields:
   Enabled: false
 
 Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Metrics/MethodLength:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
