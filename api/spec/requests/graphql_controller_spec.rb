@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe GraphqlController, type: :request do
+RSpec.describe(GraphqlController, type: :request) do
   let(:user) { create(:user) }
 
   describe 'POST /graphql' do
@@ -20,7 +20,7 @@ RSpec.describe GraphqlController, type: :request do
 
       it 'gives access to viewer' do
         json_response = JSON.parse(response.body)
-        expect(json_response['data']['viewer']['email']).to eq(user.email)
+        expect(json_response['data']['viewer']['email']).to(eq(user.email))
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe GraphqlController, type: :request do
 
       it 'does not give access to viewer' do
         json_response = JSON.parse(response.body)
-        expect(json_response['data']['viewer']).to be_nil
+        expect(json_response['data']['viewer']).to(be_nil)
       end
     end
   end

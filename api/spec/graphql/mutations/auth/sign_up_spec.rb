@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Mutations::Auth::SignUp do
+RSpec.describe(Mutations::Auth::SignUp) do
   let(:body) do
     <<-GRAPHQL
       mutation SignUp($input: AuthSignUpInput!) {
@@ -41,8 +41,12 @@ RSpec.describe Mutations::Auth::SignUp do
   it_behaves_like 'a guest only operation'
 
   it 'returns expected data' do
-    expect(data['user']['name']).to eq('john@example.com')
-    expect(data['user']['email']).to eq('john@example.com')
-    expect(data['authenticationToken']).to eq(User.find_by(email: 'john@example.com').authentication_token)
+    expect(data).to(include({
+      user: {
+        name: 'john@example.com',
+        email: 'john@example.com'
+      },
+      authenticationToken: User.find_by(email: 'john@example.com').authentication_token
+    }))
   end
 end

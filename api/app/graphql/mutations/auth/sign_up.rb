@@ -9,8 +9,8 @@ class Mutations::Auth::SignUp < Mutations::Base::Mutation
   argument :email, String, "The user's email address.", required: true
   argument :password, String, "The user's password.", required: true
 
-  field :user, Types::User, 'The newly registered user.', null: true
   field :authentication_token, String, "The user's authentication token.", null: true
+  field :user, Types::User, 'The newly registered user.', null: true
 
   def ready?(*)
     raise(NotAuthorizedError, I18n.t('errors.auth.already_registered')) if context[:viewer].present?
